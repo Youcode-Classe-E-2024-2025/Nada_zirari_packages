@@ -102,7 +102,45 @@
                 </form>
             </div>
 
-           
+            <!-- Formulaire pour Version -->
+            <div id="formulaire-version" class="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-8 hidden">
+                <h2 class="text-3xl font-extrabold text-indigo-600 mb-6 text-center">Ajouter une Version</h2>
+                <form action="" method="POST" class="space-y-6">
+                    <input type="hidden" name="type" value="version">
+                    <div>
+                        <label for="id_package" class="block text-sm font-medium text-gray-700 mb-1">Package</label>
+                        <select name="id_package" id="id_package" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm" required>
+                            <option value="">-- Sélectionnez un package --</option>
+                            <?php
+                            // Récupération des packages depuis la base de données
+                            $conn = new mysqli('localhost', 'root', '', 'packages');
+                            if ($conn->connect_error) {
+                                die("Connexion échouée: " . $conn->connect_error);
+                            }
+                            $result = $conn->query("SELECT id_package, nom FROM package");
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<option value='{$row['id_package']}'>{$row['nom']}</option>";
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="numero_version" class="block text-sm font-medium text-gray-700 mb-1">Numéro de Version</label>
+                        <input type="text" name="numero_version" id="numero_version" placeholder="Entrez le numéro de version"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm" required>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                                class="bg-green-500 hover:bg-indigo-600 text-white font-medium px-6 py-2 rounded-lg shadow-md">
+                            Ajouter la Version
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
     
 </body>
 </html>
