@@ -27,5 +27,6 @@ ADD COLUMN id_auteur INT;
 ALTER TABLE package
 ADD CONSTRAINT fk_auteur
 FOREIGN KEY (id_auteur) REFERENCES auteur(id_auteur) ON DELETE SET NULL;
-
+ALTER TABLE version
+ADD COLUMN dateversion DATE;
 select * from package;

@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    
     } else
-    {
+   {
         echo "<p class='text-red-500 text-center'>Erreur : " . $conn->error . "</p>";
     }
     $stmt->close();
