@@ -141,6 +141,35 @@
         </div>
     </main>
     
-    
+    <!-- JavaScript -->
+    <script>
+        const btnPackage = document.getElementById('btn-package');
+        const btnAuteur = document.getElementById('btn-auteur');
+        const btnVersion = document.getElementById('btn-version');
+        const formPackage = document.getElementById('formulaire-package');
+        const formAuteur = document.getElementById('formulaire-auteur');
+        const formVersion = document.getElementById('formulaire-version');
+
+        btnPackage.addEventListener('click', () => {
+            formPackage.classList.remove('hidden');
+            formAuteur.classList.add('hidden');
+            formVersion.classList.add('hidden');
+        });
+
+        btnAuteur.addEventListener('click', () => {
+            formAuteur.classList.remove('hidden');
+            formPackage.classList.add('hidden');
+            formVersion.classList.add('hidden');
+        });
+
+        btnVersion.addEventListener('click', () => {
+            formVersion.classList.remove('hidden');
+            formPackage.classList.add('hidden');
+            formAuteur.classList.add('hidden');
+        });
+    </script>
+ 
+   
+   
 </body>
 </html>
