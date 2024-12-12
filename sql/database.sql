@@ -13,3 +13,10 @@ CREATE TABLE auteur (
     nom_auteur VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE
 );
+
+CREATE TABLE version (
+    id_version INT AUTO_INCREMENT PRIMARY KEY,
+    id_package INT NOT NULL,
+    numero_version VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id_package) REFERENCES package(id_package) ON DELETE CASCADE 
+);
