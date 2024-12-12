@@ -20,3 +20,7 @@ CREATE TABLE version (
     numero_version VARCHAR(50) NOT NULL,
     FOREIGN KEY (id_package) REFERENCES package(id_package) ON DELETE CASCADE 
 );
+
+ALTER TABLE package
+ADD COLUMN id_auteur INT;
+
