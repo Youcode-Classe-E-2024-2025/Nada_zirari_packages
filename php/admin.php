@@ -170,6 +170,10 @@
     </script>
  
    
-   
+    <?php  
+     //Script PHP pour gérer les données
+    include 'db.php';
+    ?>
+    
 </body>
 </html>
