@@ -16,6 +16,24 @@
         </div>
     </header>
 
+    <main class="py-10 bg-blue-200">
+        <!-- Conteneur des boutons -->
+        <div class="flex space-x-4 mb-6 justify-center">
+            <button type="button" id="btn-package"
+                    class="bg-green-500 hover:bg-indigo-600 text-white font-medium px-6 py-2 rounded-lg shadow-md">
+                Ajouter le Package
+            </button>
+            <button type="button" id="btn-auteur"
+                    class="bg-green-500 hover:bg-indigo-600 text-white font-medium px-6 py-2 rounded-lg shadow-md">
+                Ajouter l'Auteur
+            </button>
+            <button type="button" id="btn-version"
+                    class="bg-green-500 hover:bg-indigo-600 text-white font-medium px-6 py-2 rounded-lg shadow-md">
+                Ajouter une Version
+            </button>
+        </div>
+
+      
     
 </body>
 </html>
