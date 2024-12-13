@@ -30,3 +30,4 @@ FOREIGN KEY (id_auteur) REFERENCES auteur(id_auteur) ON DELETE SET NULL;
 ALTER TABLE version
 ADD COLUMN dateversion DATE;
 select * from package;
+ALTER TABLE version DROP COLUMN dateversion;

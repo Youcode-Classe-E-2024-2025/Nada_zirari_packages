@@ -17,6 +17,7 @@
     </header>
 
     <main class="py-10 bg-blue-200">
+        <h2 class="text-grey-400 text-2xl font-extrabold text-center"> Bonjour! choisir votre option:</h2><br><br>
         <!-- Conteneur des boutons -->
         <div class="flex space-x-4 mb-6 justify-center">
             <button type="button" id="btn-package"
@@ -139,6 +140,29 @@
                 </form>
             </div>
         </div>
+         <!-- Tableau des packages -->
+         <div class="mt-8">
+                    <h3 class="text-xl font-bold text-indigo-600 mb-4 ">Liste des Packages</h3>
+                    <table class=" bg-white rounded-lg shadow">
+                        <thead>
+                            <tr class="bg-indigo-600 text-white">
+                                <th class="px-4 py-2 text-left">Nom</th>
+                                <th class="px-4 py-2 text-left">Description</th>
+                                <th class="px-4 py-2 text-left">Auteur</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <?php
+                            $conn = new mysqli('localhost', 'root', '', 'packages');
+                            $result = $conn->query("SELECT p.nom, p.description, a.nom_auteur FROM package p INNER JOIN auteur a ON p.id_auteur = a.id_auteur");
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr><td class='px-4 py-2'>{$row['nom']}</td><td class='px-4 py-2'>{$row['description']}</td><td class='px-4 py-2'>{$row['nom_auteur']}</td></tr>";
+                            }
+                            $conn->close();
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
     </main>
     
     <!-- JavaScript -->
