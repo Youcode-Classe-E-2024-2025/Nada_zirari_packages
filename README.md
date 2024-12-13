@@ -74,8 +74,13 @@ $servername = "localhost";
 $username = "root"; // Nom d'utilisateur MySQL par défaut
 $password = "";     // Mot de passe par défaut (vide pour XAMPP)
 $dbname = "packages";
+
+
 Étape 3 : Exécution du projet
+
+
 Lancez le serveur Apache et MySQL via votre environnement local (exemple : XAMPP).
+
 Accédez à votre projet en ouvrant un navigateur et en allant à l'adresse suivante :
 http://localhost/admin.php
 
@@ -85,6 +90,7 @@ Fonctionnalités
 Formulaires dynamiques : Gestion via PHP et JavaScript.
 
 Interaction avec une base de données MySQL : Stockage et récupération des données.
+
 Style et animations : Ajoutés avec CSS et JavaScript.
 
 
