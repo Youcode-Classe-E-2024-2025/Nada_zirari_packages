@@ -140,29 +140,74 @@
                 </form>
             </div>
         </div>
-         <!-- Tableau des packages -->
-         <div class="mt-8">
-                    <h3 class="text-xl font-bold text-indigo-600 mb-4 ">Liste des Packages</h3>
-                    <table class=" bg-white rounded-lg shadow">
-                        <thead>
-                            <tr class="bg-indigo-600 text-white">
-                                <th class="px-4 py-2 text-left">Nom</th>
-                                <th class="px-4 py-2 text-left">Description</th>
-                                <th class="px-4 py-2 text-left">Auteur</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <?php
-                            $conn = new mysqli('localhost', 'root', '', 'packages');
-                            $result = $conn->query("SELECT p.nom, p.description, a.nom_auteur FROM package p INNER JOIN auteur a ON p.id_auteur = a.id_auteur");
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr><td class='px-4 py-2'>{$row['nom']}</td><td class='px-4 py-2'>{$row['description']}</td><td class='px-4 py-2'>{$row['nom_auteur']}</td></tr>";
-                            }
-                            $conn->close();
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+
+        <!-- Section contenant les tableaux -->
+    <div class="space-y-10">
+        <!-- Tableau pour afficher les Packages -->
+        <div id="tableau-package" class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8 my-4">
+            <h2 class="text-3xl font-extrabold text-indigo-600 mb-6 text-center">Liste des Packages</h2>
+            <table class="min-w-full table-auto">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 border">Nom du Package</th>
+                        <th class="px-4 py-2 border">Description</th>
+                        <th class="px-4 py-2 border">Auteur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Récupérer les données des packages
+                    $conn = new mysqli('localhost', 'root', '', 'packages');
+                    if ($conn->connect_error) {
+                        die("Connexion échouée: " . $conn->connect_error);
+                    }
+                    $result = $conn->query("SELECT p.nom, p.description, a.nom_auteur FROM package p LEFT JOIN auteur a ON p.id_auteur = a.id_auteur");
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td class='px-4 py-2 border'>{$row['nom']}</td>";
+                        echo "<td class='px-4 py-2 border'>{$row['description']}</td>";
+                        echo "<td class='px-4 py-2 border'>{$row['nom_auteur']}</td>";
+                        echo "</tr>";
+                    }
+                    $conn->close();
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tableau pour afficher les Auteurs -->
+        <div id="tableau-auteur" class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-extrabold text-indigo-600 mb-6 text-center">Liste des Auteurs</h2>
+            <table class="min-w-full table-auto">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 border">Nom de l'Auteur</th>
+                        <th class="px-4 py-2 border">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Récupérer les données des auteurs
+                    $conn = new mysqli('localhost', 'root', '', 'packages');
+                    if ($conn->connect_error) {
+                        die("Connexion échouée: " . $conn->connect_error);
+                    }
+                    $result = $conn->query("SELECT nom_auteur, email FROM auteur");
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td class='px-4 py-2 border'>{$row['nom_auteur']}</td>";
+                        echo "<td class='px-4 py-2 border'>{$row['email']}</td>";
+                        echo "</tr>";
+                    }
+                    $conn->close();
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+
     </main>
     
     <!-- JavaScript -->
